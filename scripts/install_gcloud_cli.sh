@@ -15,4 +15,4 @@ tar -C /usr/local -xzf $GCLOUD_INSTALL
 rm $GCLOUD_INSTALL
 
 # remove temp dir
-rm -rf /usr/local/google-cloud-sdk/.install
+rm -rf /usr/local/google-cloud-sdk/.install/.backup

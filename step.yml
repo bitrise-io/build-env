@@ -80,18 +80,23 @@ inputs:
 outputs:
   - GCLOUD_PROJECT:
     opts:
-      title: 'Google cloud project'
+      title: Google cloud project
       summary: Google cloud project parsed from $GCLOUD_KEY
       description: Google cloud project parsed from $GCLOUD_KEY
   - GCLOUD_USER:
     opts:
-      title: 'Google cloud user'
+      title: Google cloud user
       summary: Google cloud user parsed from $GCLOUD_KEY
       description: Google cloud user parsed from $GCLOUD_KEY
   - SERVICE_IMAGE_ID:
     opts:
-      title: 'Service image ID'
+      title: Service image ID
       summary: 'gcr.io/$GCLOUD_PROJECT/$SERVICE_NAME:$BITRISE_BUILD_NUMBER'
       description: |-
         Opinionated naming for the image id being built for the service. This makes sure the
         image is correctly named for GCR.
+  - GOOGLE_APPLICATION_CREDENTIALS:
+    opts:
+      title: Google credentials path
+      summary: Google credentials path
+      description: Google credentials path

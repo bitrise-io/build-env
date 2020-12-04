@@ -6,6 +6,8 @@ GCLOUD_USER=$(echo -n $GCLOUD_KEY | jq -r '.client_email')
 
 echo "Authenticating $GCLOUD_USER to $GCLOUD_PROJECT project..."
 
+export GOOGLE_APPLICATION_CREDENTIALS=/tmp/gcloud_key.json
+
 gcloud auth activate-service-account $GCLOUD_USER --key-file=/tmp/gcloud_key.json
 gcloud config set project $GCLOUD_PROJECT
 gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
@@ -29,3 +31,4 @@ fi
 envman add --key SERVICE_IMAGE_ID --value "gcr.io/$GCLOUD_PROJECT/$SERVICE_NAME:$BITRISE_BUILD_NUMBER"
 envman add --key GCLOUD_PROJECT --value $GCLOUD_PROJECT
 envman add --key GCLOUD_USER --value $GCLOUD_USER
+envman add --key GOOGLE_APPLICATION_CREDENTIALS --value $GOOGLE_APPLICATION_CREDENTIALS

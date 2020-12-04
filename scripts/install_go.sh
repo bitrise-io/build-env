@@ -16,7 +16,3 @@ tar -C /usr/local -xzf $GO_INSTALL
 
 # remove install file
 rm $GO_INSTALL
-
-# install additional dependencies
-/usr/local/go/bin/go get -u github.com/kisielk/errcheck
-/usr/local/go/bin/go get -u golang.org/x/lint/golint

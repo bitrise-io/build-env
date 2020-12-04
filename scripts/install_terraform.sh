@@ -11,6 +11,3 @@ mv terraform /usr/local/bin
 
 # remove install
 rm $FILE
-
-# install tfsec
-/usr/local/go/bin/go get -u github.com/tfsec/tfsec/cmd/tfsec

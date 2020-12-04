@@ -26,16 +26,20 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     && rm -rf /var/cache/apt
 
 ENV GOBIN=/usr/local/go/bin
-ENV GOPATH=/usr/local/go
+ENV GOPATH=$HOME/go
 ENV PATH=$PATH:/usr/local/google-cloud-sdk/bin:/usr/local/bin/argocd:${GOBIN}
 
-RUN bitrise setup \
+RUN mkdir -p $BITRISE_SOURCE_DIR \
+    && mkdir -p $GOPATH \
+    && bitrise setup \
     && bitrise envman -version \
     && bitrise stepman -version \
     #  cache for the StepLib
     && bitrise stepman setup -c https://github.com/bitrise-io/bitrise-steplib.git \
     && bitrise stepman update \
-    && mkdir -p $BITRISE_SOURCE_DIR
+    && go get -u github.com/kisielk/errcheck \
+    && go get -u github.com/tfsec/tfsec/cmd/tfsec \
+    && go get -u golang.org/x/lint/golint
 
 WORKDIR $BITRISE_SOURCE_DIR
 
