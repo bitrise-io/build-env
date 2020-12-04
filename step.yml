@@ -33,9 +33,9 @@ run_if: ""
 
 deps:
   brew:
-    - jq
+    - name: jq
   apt_get:
-    - jq
+    - name: jq
 
 toolkit:
   bash:
