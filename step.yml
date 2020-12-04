@@ -42,6 +42,14 @@ toolkit:
     entry_file: step/main.sh
 
 inputs:
+  - SERVICE_NAME:
+    opts:
+      title: "Service name"
+      summary: Name of the service
+      description: Name of the service
+      is_expand: true
+      is_required: true
+      value_options: []
   - GCLOUD_KEY:
     opts:
       title: "Gcloud key"
@@ -80,3 +88,10 @@ outputs:
       title: 'Google cloud user'
       summary: Google cloud user parsed from $GCLOUD_KEY
       description: Google cloud user parsed from $GCLOUD_KEY
+  - SERVICE_IMAGE_ID:
+    opts:
+      title: 'Service image ID'
+      summary: 'gcr.io/$GCLOUD_PROJECT/$SERVICE_NAME:$BITRISE_BUILD_NUMBER'
+      description: |-
+        Opinionated naming for the image id being built for the service. This makes sure the
+        image is correctly named for GCR.

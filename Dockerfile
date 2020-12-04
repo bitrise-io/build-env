@@ -15,11 +15,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     sudo \
     expect \
     unzip \
+    jq \
+    docker.io \
     && /tmp/install_bitrise_cli.sh \
     && /tmp/install_go.sh \
     && /tmp/install_gcloud_cli.sh \
     && /tmp/install_helm.sh \
-    && /tmp/install_argo.sh \
+    # && /tmp/install_argo.sh \
     && /tmp/install_terraform.sh \
     && rm -rf /var/cache/apt
 
