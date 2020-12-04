@@ -8,5 +8,11 @@ curl -sSL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/$GCLOUD_INS
 # extract it
 tar -C /usr/local -xzf $GCLOUD_INSTALL
 
+# install kubectl
+/usr/local/google-cloud-sdk/bin/gcloud components install kubectl --quiet
+
 # remove install
 rm $GCLOUD_INSTALL
+
+# remove temp dir
+rm -rf /usr/local/google-cloud-sdk/.install

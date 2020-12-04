@@ -1,4 +1,9 @@
-FROM ubuntu:18.04
+FROM ubuntu:latest
+
+ENV CLI_VERSION=1.44.1 \
+    GO_VERSION=1.15.6 \
+    TERRAFORM_VERSION=0.13.5 \
+    BITRISE_SOURCE_DIR="/bitrise/src"
 
 ADD ./scripts/* /tmp/
 
@@ -10,20 +15,19 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     sudo \
     expect \
     unzip \
-    && curl -qL https://github.com/bitrise-io/bitrise/releases/download/1.44.1/bitrise-$(uname -s)-$(uname -m) -o /usr/local/bin/bitrise \
-    && GO_VERSION=1.13.5 /tmp/install_go.sh \
+    && /tmp/install_bitrise_cli.sh \
+    && /tmp/install_go.sh \
     && /tmp/install_gcloud_cli.sh \
+    && /tmp/install_helm.sh \
     && /tmp/install_argo.sh \
-    && VERSION=0.13.5 /tmp/install_terraform.sh \
+    && /tmp/install_terraform.sh \
     && rm -rf /var/cache/apt
 
-ENV BITRISE_SOURCE_DIR="/bitrise/src"
 ENV GOBIN=/usr/local/go/bin
 ENV GOPATH=/usr/local/go
-ENV PATH=$PATH:/usr/local/google-cloud-sdk/bin:/usr/local/bin/argocd:/usr/local/bin/terraform:${GOBIN}
+ENV PATH=$PATH:/usr/local/google-cloud-sdk/bin:/usr/local/bin/argocd:${GOBIN}
 
-RUN chmod +x /usr/local/bin/bitrise \
-    && bitrise setup \
+RUN bitrise setup \
     && bitrise envman -version \
     && bitrise stepman -version \
     #  cache for the StepLib
