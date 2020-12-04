@@ -10,7 +10,7 @@ gcloud auth activate-service-account $GCLOUD_USER --key-file=/tmp/gcloud_key.jso
 gcloud config set project $GCLOUD_PROJECT
 gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
 
-if [ -z "$GKE_CLUSTER" ]; then
+if [ ! -z "$GKE_CLUSTER" ]; then
 echo "Setting up access to $GKE_CLUSTER..."
 
 # setup kubectl access
@@ -18,7 +18,7 @@ gcloud container clusters get-credentials --zone=us-central1-a $GKE_CLUSTER
 fi
 
 
-if [ -z "$TERRAFORM_DIR" ]; then
+if [ ! -z "$TERRAFORM_DIR" ]; then
 echo "Initializing terraform in $TERRAFORM_DIR..."
 pushd $TERRAFORM_DIR
 terraform init
