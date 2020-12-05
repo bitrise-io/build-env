@@ -72,7 +72,12 @@ inputs:
       summary: Initializes terraform provider for given directory
       description: |-
         In case you have a terraform infrastructure config you can initialize the folder by setting this input.
-
+  - HELM_REPO:
+    opts:
+      title: "Helm repository"
+      summary: "Script will add and initialize this helm Helm repository"
+      description: |-
+        Script will add and initialize the given helmrepository.
       is_expand: true
       is_required: false
       value_options: []

@@ -27,6 +27,11 @@ terraform init
 popd
 fi
 
+if [ ! -z "$HELM_REPO" ]; then
+helm repo add main $HELM_REPO
+helm repo update
+fi
+
 # Outputs
 envman add --key SERVICE_IMAGE_ID --value "gcr.io/$GCLOUD_PROJECT/$SERVICE_NAME:$BITRISE_BUILD_NUMBER"
 envman add --key GCLOUD_PROJECT --value $GCLOUD_PROJECT
