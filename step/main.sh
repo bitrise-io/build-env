@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 echo -n $GCLOUD_KEY > /tmp/gcloud_key.json
 
+WD="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 GCLOUD_PROJECT=$(echo -n $GCLOUD_KEY | jq -r '.project_id')
 GCLOUD_USER=$(echo -n $GCLOUD_KEY | jq -r '.client_email')
 
@@ -27,9 +29,10 @@ terraform init
 popd
 fi
 
-if [ ! -z "$HELM_REPO" ]; then
-helm repo add main $HELM_REPO
-helm repo update
+if [ ! -z "$PRIVATE_GITHUB_HELM_CHART" ]; then
+echo "Downloading $PRIVATE_GITHUB_HELM_CHART helm chart..."
+CHART=$($WD/download_release.sh $PRIVATE_GITHUB_HELM_CHART)
+mkdir -p .helm && tar -C .helm -xzf $CHART
 fi
 
 # Outputs
