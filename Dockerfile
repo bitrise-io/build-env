@@ -49,3 +49,4 @@ RUN mkdir -p $BITRISE_SOURCE_DIR \
 
 WORKDIR $BITRISE_SOURCE_DIR
 
+COPY ./ssh/config /root/.ssh/config
