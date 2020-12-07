@@ -11,6 +11,7 @@ Bitrise building environment for internal services. Contains pre-installed tools
 * go
 * terraform
 * bitrise CLI
+* nodejs
 * (argo-CD CLI coming later)
 * tfsec (github.com/tfsec/tfsec/cmd/tfsec)
 
@@ -27,7 +28,7 @@ whether you specify or not the corresponging inputs:
 * __GCLOUD_KEY__: Setup and authenticate gcloud CLI from a service user key
 * __GKE_CLUSTER__: Setup a specific cluster to kubectl
 * __TERRAFORM_DIR__: Initializes terraform in a specific directory
-* __PRIVATE_GITHUB_HELM_CHART__: Downloads the specific private helm chart from a specific github release to `.helm` folder. Format: `{ORG}/{REPO}/{RELEASE_TAG}`
+* __HELM_REPO__: Setup and initializes helm repository. [helm GH downloader](https://github.com/web-seven/helm-github.git) is preinstalled.
 
 Usage in bitrise workflow:
 
@@ -40,13 +41,9 @@ Usage in bitrise workflow:
       - GCLOUD_KEY: $GCLOUD_KEY
       - GKE_CLUSTER: $GKE_CLUSTER
       - TERRAFORM_DIR: $BITRISE_SOURCE_DIR/infra
-      - PRIVATE_GITHUB_HELM_CHART: github-org/helm-repo/specific-chart-0.1.1
+      - HELM_REPO: $HELM_REPO
 ```
 
-## Note on private Github helm charts (~workaround)
+## Note on private Helm github repositories
 
-This setup logic has assumptions on the underlying Github based helm repository. The charts should be published as github releases in tgz format.
-E.g [chart-releaser](https://github.com/helm/chart-releaser) helm plugin is able to do this. So why do we need to download the chart itself and store it in a local directory instead of letting helm manage this for us (via repo commands)? Unfortunately helm is not able to interact with private github
-releases, more on this here: https://github.com/helm/helm/issues/7451. Once that solved we can use standard helm repo commands to interact with chart.
-
-Also in order to download private releases you need to set `$GITHUB_TOKEN` env var which should be a github access token. More on this: [https://github.com/settings/tokens](https://github.com/settings/tokens)
+In order to download private releases you need to set `$GITHUB_TOKEN` env var which should be a github access token. More on this: [https://github.com/settings/tokens](https://github.com/settings/tokens)

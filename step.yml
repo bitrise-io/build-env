@@ -72,13 +72,13 @@ inputs:
       summary: Initializes terraform provider for given directory
       description: |-
         In case you have a terraform infrastructure config you can initialize the folder by setting this input.
-  - PRIVATE_GITHUB_HELM_CHART:
+  - HELM_REPO: github://bitrise-io/k8s-recipes
     opts:
-      title: "Helm chart use for the service"
-      summary: "Attempts to download a private helm chart (private release)"
+      title: "Helm repository to setup"
+      summary: "Helm repository to setup"
       description: |-
-        Attempts to download a private helm chart (private release) and stores it in ".helm" of the service.
-        Note: GITHUB_TOKEN env var is mandatory to be set (as secret) in order to use github api. [https://github.com/settings/tokens](https://github.com/settings/tokens)
+        Note: for private github repositories GITHUB_TOKEN env var is mandatory to be set (as secret)
+        in order to use github api. [https://github.com/settings/tokens](https://github.com/settings/tokens).
       is_expand: true
       is_required: false
       value_options: []

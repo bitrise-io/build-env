@@ -5,3 +5,6 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scr
 chmod +x get_helm.sh
 
 ./get_helm.sh
+
+# install github release plugin
+helm plugin install https://github.com/web-seven/helm-github.git

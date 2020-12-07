@@ -29,10 +29,10 @@ terraform init
 popd
 fi
 
-if [ ! -z "$PRIVATE_GITHUB_HELM_CHART" ]; then
-echo "Downloading $PRIVATE_GITHUB_HELM_CHART helm chart..."
-CHART=$($WD/download_release.sh $PRIVATE_GITHUB_HELM_CHART)
-mkdir -p .helm && tar -C .helm -xzf $CHART
+if [ ! -z "$HELM_REPO" ]; then
+echo "Adding $HELM_REPO helm repository..."
+helm repo add main $HELM_REPO
+helm repo update
 fi
 
 # Outputs
