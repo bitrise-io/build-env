@@ -5,7 +5,7 @@ ENV GO_VERSION=1.15.6 \
     GCLOUD_VERSION=320.0.0 \
     # overriding GOPATH so we'll preserve pre-installed packages
     GOPATH=$HOME/go \
-    GOBIN=$GOPATH/bin
+    GOBIN=$HOME/go/bin
 
 ADD ./scripts/* /tmp/
 
