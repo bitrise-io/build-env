@@ -66,6 +66,13 @@ inputs:
       is_expand: true
       is_required: false
       value_options: []
+  - GKE_CLUSTER_REGION: us-central1
+    opts:
+      title: "Region of GKE cluster"
+      summary: "Region of GKE cluster"
+      is_expand: true
+      is_required: false
+      value_options: []
   - TERRAFORM_DIR:
     opts:
       title: "Terraform directory path"

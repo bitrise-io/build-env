@@ -18,7 +18,7 @@ if [ ! -z "$GKE_CLUSTER" ]; then
 echo "Setting up access to $GKE_CLUSTER..."
 
 # setup kubectl access
-gcloud container clusters get-credentials --zone=us-central1-a $GKE_CLUSTER
+gcloud container clusters get-credentials --region=$GKE_CLUSTER_REGION $GKE_CLUSTER
 fi
 
 
