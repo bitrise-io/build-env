@@ -1,7 +1,7 @@
 FROM bitriseio/docker-bitrise-base:latest
 
 ENV GO_VERSION=1.15.6 \
-    TERRAFORM_VERSION=0.13.5 \
+    TERRAFORM_VERSION=0.14.3 \
     GCLOUD_VERSION=320.0.0 \
     # overriding GOPATH so we'll preserve pre-installed packages
     GOPATH=$HOME/go \
