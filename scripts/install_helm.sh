@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # get helm installation file
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+curl -LO https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
 
-# install gelm
-chmod +x get_helm.sh && ./get_helm.sh
+# extract it
+tar -xvzf helm-v${HELM_VERSION}-linux-amd64.tar.gz
 
-# install github release plugin
-helm plugin install https://github.com/web-seven/helm-github.git
+# move it to appropriate place
+mv linux-amd64/helm /usr/local/bin/helm
 
-# remove install file
-rm get_helm.sh
+# remove folder
+rm -rf linux-amd64/
