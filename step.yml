@@ -79,13 +79,12 @@ inputs:
       summary: Initializes terraform provider for given directory
       description: |-
         In case you have a terraform infrastructure config you can initialize the folder by setting this input.
-  - HELM_REPO: github://bitrise-io/k8s-recipes
+  - HELM_REPO:
     opts:
       title: "Helm repository to setup"
       summary: "Helm repository to setup"
       description: |-
-        Note: for private github repositories GITHUB_TOKEN env var is mandatory to be set (as secret)
-        in order to use github api. [https://github.com/settings/tokens](https://github.com/settings/tokens).
+        It will add this repository as "main" + updates it as well.
       is_expand: true
       is_required: false
       value_options: []
