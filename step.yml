@@ -29,7 +29,7 @@ type_tags:
 is_requires_admin_user: false
 is_always_run: false
 is_skippable: false
-run_if: ""
+run_if: .IsCI
 
 deps:
   brew:
@@ -79,6 +79,12 @@ inputs:
       summary: Initializes terraform provider for given directory
       description: |-
         In case you have a terraform infrastructure config you can initialize the folder by setting this input.
+  - TERRAFORM_SECRETS:
+    opts:
+      title: "Terraform secrets value (tfvar syntax)"
+      summary: Initializes terraform variable file based on secret values
+      description: |-
+        You can specify the secret values to this step and a `terraform.tfvars` file will be created in $TERRAFORM_DIR folder. Note you must specify $TERRAFORM_DIR input in order for this to work.
   - HELM_REPO:
     opts:
       title: "Helm repository to setup"

@@ -29,6 +29,13 @@ terraform init
 popd
 fi
 
+if [ ! -z "$TERRAFORM_SECRETS" ] && [ ! -z "$TERRAFORM_DIR" ]; then
+echo "Copying terraform secrets to $TERRAFORM_DIR/terraform.tfvars"
+echo -n $TERRAFORM_SECRETS > "$TERRAFORM_DIR/terraform.tfvars"
+elif [ -z "$TERRAFORM_DIR" ]; then
+echo "You need to specify TERRAFORM_DIR input with TERRAFORM_SECRETS"
+fi
+
 if [ ! -z "$HELM_REPO" ]; then
 echo "Adding $HELM_REPO helm repository..."
 helm repo add main $HELM_REPO
