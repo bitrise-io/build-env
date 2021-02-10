@@ -84,7 +84,7 @@ inputs:
       title: "Terraform secrets value (tfvar syntax)"
       summary: Initializes terraform variable file based on secret values
       description: |-
-        You can specify the secret values to this step and a `terraform.tfvars` file will be created in $TERRAFORM_DIR folder. Note you must specify $TERRAFORM_DIR input in order for this to work.
+        You can specify the secret values to this step and a `secrets.auto.tfvars` file will be created in $TERRAFORM_DIR folder. Note you must specify $TERRAFORM_DIR input in order for this to work.
   - HELM_REPO:
     opts:
       title: "Helm repository to setup"

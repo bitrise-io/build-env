@@ -30,8 +30,8 @@ popd
 fi
 
 if [ ! -z "$TERRAFORM_SECRETS" ] && [ ! -z "$TERRAFORM_DIR" ]; then
-echo "Copying terraform secrets to $TERRAFORM_DIR/terraform.tfvars"
-echo -n $TERRAFORM_SECRETS > "$TERRAFORM_DIR/terraform.tfvars"
+echo "Copying terraform secrets to $TERRAFORM_DIR/secrets.auto.tfvars"
+echo -n $TERRAFORM_SECRETS > "$TERRAFORM_DIR/secrets.auto.tfvars"
 elif [ -z "$TERRAFORM_DIR" ]; then
 echo "You need to specify TERRAFORM_DIR input with TERRAFORM_SECRETS"
 fi
