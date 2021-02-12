@@ -16,6 +16,8 @@ description: |
 website: https://github.com/bitrise-io/build-env
 source_code_url: https://github.com/bitrise-io/build-env
 support_url: https://github.com/bitrise-io/build-env
+asset_urls:
+  icon.svg: https://assets-global.website-files.com/5db35de024bb983af1b4e151/5e0671fd77d741421b3cccab_cat.png
 host_os_tags:
   - osx-10.10
   - ubuntu-16.04
@@ -85,6 +87,12 @@ inputs:
       summary: Initializes terraform variable file based on secret values
       description: |-
         You can specify the secret values to this step and a `secrets.auto.tfvars` file will be created in $TERRAFORM_DIR folder. Note you must specify $TERRAFORM_DIR input in order for this to work.
+  - TERRAFORM_WORKSPACE: default
+    opts:
+      title: "Terraform workspace to select"
+      summary: Selects specific terraform workspace
+      description: |-
+        This settings would select a terraform workspace for additional operation. Default value is "default".
   - HELM_REPO:
     opts:
       title: "Helm repository to setup"

@@ -1,6 +1,6 @@
 FROM bitriseio/docker-bitrise-base:latest
 
-ENV GO_VERSION=1.15.6 \
+ENV GO_VERSION=1.15.7 \
     TERRAFORM_VERSION=0.14.3 \
     HELM_VERSION=3.5.0 \
     GCLOUD_VERSION=320.0.0 \

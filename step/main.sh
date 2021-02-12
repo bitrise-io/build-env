@@ -23,9 +23,13 @@ fi
 
 
 if [ ! -z "$TERRAFORM_DIR" ]; then
-echo "Initializing terraform in $TERRAFORM_DIR..."
+echo "Initializing terraform in $TERRAFORM_DIR... using $TERRAFORM_WORKSPACE"
 pushd $TERRAFORM_DIR
 terraform init
+terraform workspace select $TERRAFORM_WORKSPACE
+
+# increases envman environment bytes limit (useful for large TF plans)
+mkdir -p ~/.envman && echo -e '{"env_bytes_limit_in_kb": 60}' > ~/.envman/configs.json
 popd
 fi
 

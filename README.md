@@ -29,6 +29,8 @@ whether you specify or not the corresponging inputs:
 * __GKE_CLUSTER__: Setup a specific cluster to kubectl
 * __GKE_CLUSTER_REGION__: Region of specific cluster (only regional supported)
 * __TERRAFORM_DIR__: Initializes terraform in a specific directory
+* __TERRAFORM_SECRETS__: Creates "secrets.auto.tfvars" file from secret env vars
+* __TERRAFORM_WORKSPACE__: Initializes specific terraform workspace
 * __HELM_REPO__: Setup and initializes helm repository. [helm GH downloader](https://github.com/web-seven/helm-github.git) is preinstalled.
 
 Usage in bitrise workflow:
@@ -43,6 +45,7 @@ Usage in bitrise workflow:
       - GKE_CLUSTER: $GKE_CLUSTER
       - GKE_CLUSTER_REGION: $REGION
       - TERRAFORM_DIR: $BITRISE_SOURCE_DIR/infra
+      - TERRAFORM_SECRETS: "$TF_SECRETS"
       - HELM_REPO: $HELM_REPO
 ```
 
