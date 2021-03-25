@@ -21,10 +21,10 @@ Bitrise building environment for internal services. Contains pre-installed tools
 
 ## Environment initializer Step
 
-Beside preinstalled tools this package also contains and environment initializer step which takes care of multiple things. Every step is optional, depending on
+Beside preinstalled tools this package also contains an environment initializer step which takes care of multiple things. Every step is optional, depending on
 whether you specify or not the corresponging inputs:
 
-* __GCLOUD_KEY__: Setup and authenticate gcloud CLI from a service user key
+* __GCLOUD_KEY__: Setup and authenticate gcloud CLI from a service user key (required)
 * __GKE_CLUSTER__: Setup a specific cluster to kubectl (optional)
 * __GKE_CLUSTER_REGION__: Region of specific cluster (only regional supported - optional)
 * __TERRAFORM_DIR__: Initializes terraform in a specific directory (optional)
