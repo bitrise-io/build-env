@@ -12,7 +12,6 @@ Bitrise building environment for internal services. Contains pre-installed tools
 * terraform
 * bitrise CLI
 * nodejs
-* (argo-CD CLI coming later)
 * tfsec (github.com/tfsec/tfsec/cmd/tfsec)
 
 ### Preinstalled GO packages
@@ -26,12 +25,12 @@ Beside preinstalled tools this package also contains and environment initializer
 whether you specify or not the corresponging inputs:
 
 * __GCLOUD_KEY__: Setup and authenticate gcloud CLI from a service user key
-* __GKE_CLUSTER__: Setup a specific cluster to kubectl
-* __GKE_CLUSTER_REGION__: Region of specific cluster (only regional supported)
-* __TERRAFORM_DIR__: Initializes terraform in a specific directory
-* __TERRAFORM_SECRETS__: Creates "secrets.auto.tfvars" file from secret env vars
-* __TERRAFORM_WORKSPACE__: Initializes specific terraform workspace
-* __HELM_REPO__: Setup and initializes helm repository. [helm GH downloader](https://github.com/web-seven/helm-github.git) is preinstalled.
+* __GKE_CLUSTER__: Setup a specific cluster to kubectl (optional)
+* __GKE_CLUSTER_REGION__: Region of specific cluster (only regional supported - optional)
+* __TERRAFORM_DIR__: Initializes terraform in a specific directory (optional)
+* __TERRAFORM_SECRETS__: Creates "secrets.auto.tfvars" file from secret env vars (optional)
+* __TERRAFORM_WORKSPACE__: Initializes specific terraform workspace (optional)
+* __HELM_REPO__: Setup and initializes helm repository. (optional)
 
 Usage in bitrise workflow:
 
@@ -48,7 +47,3 @@ Usage in bitrise workflow:
       - TERRAFORM_SECRETS: "$TF_SECRETS"
       - HELM_REPO: $HELM_REPO
 ```
-
-### Note on private Helm github repositories
-
-In order to download private releases you need to set `$GITHUB_TOKEN` env var which should be a github access token. More on this: [https://github.com/settings/tokens](https://github.com/settings/tokens)
