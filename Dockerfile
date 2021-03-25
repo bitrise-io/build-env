@@ -1,7 +1,7 @@
-FROM bitriseio/docker-bitrise-base:latest
+FROM bitriseio/bitrise-base-20.04:latest
 
 ENV GO_VERSION=1.15.7 \
-    TERRAFORM_VERSION=0.14.3 \
+    TERRAFORM_VERSION=0.14.7 \
     HELM_VERSION=3.5.0 \
     GCLOUD_VERSION=320.0.0 \
     # overriding GOPATH so we'll preserve pre-installed packages
