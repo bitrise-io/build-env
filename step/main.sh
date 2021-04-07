@@ -25,7 +25,14 @@ fi
 if [ ! -z "$TERRAFORM_DIR" ]; then
 echo "Initializing terraform in $TERRAFORM_DIR... using $TERRAFORM_WORKSPACE"
 pushd $TERRAFORM_DIR
+
+backend_config_file="$TERRAFORM_WORKSPACE-backend.tfvars"
+if [[ -f "$backend_config_file" ]]; then
+terraform init -backend-config=$backend_config_file
+else
 terraform init
+fi
+
 terraform workspace select $TERRAFORM_WORKSPACE
 
 # increases envman environment bytes limit (useful for large TF plans)
