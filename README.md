@@ -32,6 +32,8 @@ whether you specify or not the corresponging inputs:
 * __TERRAFORM_WORKSPACE__: Initializes specific terraform workspace (optional)
 * __HELM_REPO__: Setup and initializes helm repository. (optional)
 
+Terraform initialization checks if a backend configuration file with the name `$TERRAFORM_WORKSPACE-backend.tfvars` is present. If such config file is found, it is passed to the init command. This can be used to set the remote terraform backend's bucket.
+
 Usage in bitrise workflow:
 
 ```yaml
