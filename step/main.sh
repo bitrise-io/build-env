@@ -26,10 +26,14 @@ if [ ! -z "$TERRAFORM_DIR" ]; then
 echo "Initializing terraform in $TERRAFORM_DIR... using $TERRAFORM_WORKSPACE"
 pushd $TERRAFORM_DIR
 
+ls -la
 backend_config_file="$TERRAFORM_WORKSPACE-backend.tfvars"
+echo "Looking for $backend_config_file"
 if [[ -f "$backend_config_file" ]]; then
+echo "Terraform backend confi file found: $backend_config_file"
 terraform init -backend-config=$backend_config_file
 else
+echo "Not found"
 terraform init
 fi
 
