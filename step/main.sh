@@ -28,6 +28,7 @@ pushd $TERRAFORM_DIR
 
 backend_config_file="$TERRAFORM_WORKSPACE-backend.tfvars"
 if [[ -f "$backend_config_file" ]]; then
+echo "Terraform backend config file found: $backend_config_file"
 terraform init -backend-config=$backend_config_file
 else
 terraform init
