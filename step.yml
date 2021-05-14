@@ -93,15 +93,6 @@ inputs:
       summary: Selects specific terraform workspace
       description: |-
         This settings would select a terraform workspace for additional operation. Default value is "default".
-  - HELM_REPO:
-    opts:
-      title: "Helm repository to setup"
-      summary: "Helm repository to setup"
-      description: |-
-        It will add this repository as "main" + updates it as well.
-      is_expand: true
-      is_required: false
-      value_options: []
 
 outputs:
   - GCLOUD_PROJECT:

@@ -7,7 +7,6 @@ Bitrise building environment for internal services. Contains pre-installed tools
 * gcloud CLI
   * python
 * kubectl
-* helm
 * go
 * terraform
 * bitrise CLI
@@ -30,7 +29,6 @@ whether you specify or not the corresponging inputs:
 * __TERRAFORM_DIR__: Initializes terraform in a specific directory (optional)
 * __TERRAFORM_SECRETS__: Creates "secrets.auto.tfvars" file from secret env vars (optional)
 * __TERRAFORM_WORKSPACE__: Initializes specific terraform workspace (optional)
-* __HELM_REPO__: Setup and initializes helm repository. (optional)
 
 Terraform initialization checks if a backend configuration file with the name `$TERRAFORM_WORKSPACE-backend.tfvars` is present. If such config file is found, it is passed to the init command. This can be used to set the remote terraform backend's bucket.
 
@@ -47,5 +45,4 @@ Usage in bitrise workflow:
       - GKE_CLUSTER_REGION: $REGION
       - TERRAFORM_DIR: $BITRISE_SOURCE_DIR/infra
       - TERRAFORM_SECRETS: "$TF_SECRETS"
-      - HELM_REPO: $HELM_REPO
 ```
