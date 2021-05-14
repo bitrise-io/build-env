@@ -2,6 +2,11 @@
 
 WD="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+GCLOUD_PROJECT=""
+GCLOUD_USER=""
+GOOGLE_APPLICATION_CREDENTIALS=""
+SERVICE_IMAGE_ID=""
+
 if [ ! -z "$GCLOUD_KEY" ]; then
 echo -n $GCLOUD_KEY > /tmp/gcloud_key.json
 
@@ -61,7 +66,6 @@ echo "You need to specify TERRAFORM_DIR input with TERRAFORM_SECRETS"
 fi
 
 # Outputs
-
 if [ ! -z "$GCLOUD_PROJECT" ]; then
 SERVICE_IMAGE_ID="gcr.io/$GCLOUD_PROJECT/$SERVICE_NAME:$BITRISE_BUILD_NUMBER"
 fi
