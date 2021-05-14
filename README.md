@@ -32,6 +32,8 @@ whether you specify or not the corresponging inputs:
 
 Terraform initialization checks if a backend configuration file with the name `$TERRAFORM_WORKSPACE-backend.tfvars` is present. If such config file is found, it is passed to the init command. This can be used to set the remote terraform backend's bucket.
 
+Please note that using terraform initialization for an empty non-default (e.g. staging) workspace is not supported. Manually init the workspace first, then you can use it with this tool.
+
 It will choose the current terraform version based on the requirement specified in your terraform code. Highly recommended to specify the version!. Example:
 
 ```terraform
