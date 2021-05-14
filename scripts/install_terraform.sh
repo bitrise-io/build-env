@@ -17,7 +17,9 @@ chmod 755 $FILE
 # install tfswitch
 ./$FILE -b /usr/local/bin
 
-# install terraform
+
+# remove old and install new terraform
+rm /usr/local/bin/terraform
 tfswitch $TERRAFORM_VERSION
 
 # remove installer script
