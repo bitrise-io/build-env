@@ -2,11 +2,6 @@
 
 WD="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-GCLOUD_PROJECT=""
-GCLOUD_USER=""
-GOOGLE_APPLICATION_CREDENTIALS=""
-SERVICE_IMAGE_ID=""
-
 if [ ! -z "$GCLOUD_KEY" ]; then
 echo -n $GCLOUD_KEY > /tmp/gcloud_key.json
 
@@ -70,7 +65,7 @@ if [ ! -z "$GCLOUD_PROJECT" ]; then
 SERVICE_IMAGE_ID="gcr.io/$GCLOUD_PROJECT/$SERVICE_NAME:$BITRISE_BUILD_NUMBER"
 fi
 
-envman add --key SERVICE_IMAGE_ID --value $SERVICE_IMAGE_ID
-envman add --key GCLOUD_PROJECT --value $GCLOUD_PROJECT
-envman add --key GCLOUD_USER --value $GCLOUD_USER
-envman add --key GOOGLE_APPLICATION_CREDENTIALS --value $GOOGLE_APPLICATION_CREDENTIALS
+envman add --key SERVICE_IMAGE_ID --value "$SERVICE_IMAGE_ID"
+envman add --key GCLOUD_PROJECT --value "$GCLOUD_PROJECT"
+envman add --key GCLOUD_USER --value "$GCLOUD_USER"
+envman add --key GOOGLE_APPLICATION_CREDENTIALS --value "$GOOGLE_APPLICATION_CREDENTIALS"
