@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -e
+
 echo -n $GCLOUD_KEY > /tmp/gcloud_key.json
 
 WD="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
