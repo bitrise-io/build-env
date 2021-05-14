@@ -14,7 +14,11 @@ export GOOGLE_APPLICATION_CREDENTIALS=/tmp/gcloud_key.json
 
 gcloud auth activate-service-account $GCLOUD_USER --key-file=/tmp/gcloud_key.json
 gcloud config set project $GCLOUD_PROJECT
-gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
+
+for REG in "gcr.io" "us.gcr.io"; do
+gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://$REG
+done
+
 fi
 
 if [ ! -z "$GKE_CLUSTER" ]; then
