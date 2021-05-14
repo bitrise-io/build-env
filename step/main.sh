@@ -26,6 +26,9 @@ if [ ! -z "$TERRAFORM_DIR" ]; then
 echo "Initializing terraform in $TERRAFORM_DIR... using $TERRAFORM_WORKSPACE"
 pushd $TERRAFORM_DIR
 
+# use the correct terraform version
+tfswitch
+
 backend_config_file="$TERRAFORM_WORKSPACE-backend.tfvars"
 if [[ -f "$backend_config_file" ]]; then
 echo "Terraform backend config file found: $backend_config_file"

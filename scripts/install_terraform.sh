@@ -1,13 +1,7 @@
 #!/bin/bash
 
-FILE=terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+# install tfswitch
+curl -sSL https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash
 
-# download
-curl -sSL https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/$FILE -o $FILE
-unzip $FILE
-
-# move to PATH
-mv terraform /usr/local/bin
-
-# remove install
-rm $FILE
+# install terraform
+tfswitch $TERRAFORM_VERSION
