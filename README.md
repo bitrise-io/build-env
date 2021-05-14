@@ -8,7 +8,7 @@ Bitrise building environment for internal services. Contains pre-installed tools
   * python
 * kubectl
 * go
-* terraform
+* tfswitch + terraform
 * bitrise CLI
 * nodejs
 * tfsec (github.com/tfsec/tfsec/cmd/tfsec)
@@ -23,7 +23,7 @@ Bitrise building environment for internal services. Contains pre-installed tools
 Beside preinstalled tools this package also contains an environment initializer step which takes care of multiple things. Every step is optional, depending on
 whether you specify or not the corresponging inputs:
 
-* __GCLOUD_KEY__: Setup and authenticate gcloud CLI from a service user key (required)
+* __GCLOUD_KEY__: Setup and authenticate gcloud CLI from a service user key (optional)
 * __GKE_CLUSTER__: Setup a specific cluster to kubectl (optional)
 * __GKE_CLUSTER_REGION__: Region of specific cluster (only regional supported - optional)
 * __TERRAFORM_DIR__: Initializes terraform in a specific directory (optional)
@@ -32,7 +32,18 @@ whether you specify or not the corresponging inputs:
 
 Terraform initialization checks if a backend configuration file with the name `$TERRAFORM_WORKSPACE-backend.tfvars` is present. If such config file is found, it is passed to the init command. This can be used to set the remote terraform backend's bucket.
 
-Usage in bitrise workflow:
+It will choose the current terraform version based on the requirement specified in your terraform code. Highly recommended to specify the version!. Example:
+
+```terraform
+terraform {
+  required_version = "= 0.14.7"
+}
+```
+
+__Preinstalled version:__ 0.14.7
+
+
+## Usage in bitrise workflow:
 
 ```yaml
 - git::https://github.com/bitrise-io/build-env@master:

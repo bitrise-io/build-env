@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-echo -n $GCLOUD_KEY > /tmp/gcloud_key.json
 
 WD="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+if [ ! -z "$GCLOUD_KEY" ]; then
+echo -n $GCLOUD_KEY > /tmp/gcloud_key.json
 
 GCLOUD_PROJECT=$(echo -n $GCLOUD_KEY | jq -r '.project_id')
 GCLOUD_USER=$(echo -n $GCLOUD_KEY | jq -r '.client_email')
@@ -13,6 +15,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=/tmp/gcloud_key.json
 gcloud auth activate-service-account $GCLOUD_USER --key-file=/tmp/gcloud_key.json
 gcloud config set project $GCLOUD_PROJECT
 gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
+fi
 
 if [ ! -z "$GKE_CLUSTER" ]; then
 echo "Setting up access to $GKE_CLUSTER..."
@@ -54,7 +57,12 @@ echo "You need to specify TERRAFORM_DIR input with TERRAFORM_SECRETS"
 fi
 
 # Outputs
-envman add --key SERVICE_IMAGE_ID --value "gcr.io/$GCLOUD_PROJECT/$SERVICE_NAME:$BITRISE_BUILD_NUMBER"
+
+if [ ! -z "$GCLOUD_PROJECT" ]; then
+SERVICE_IMAGE_ID="gcr.io/$GCLOUD_PROJECT/$SERVICE_NAME:$BITRISE_BUILD_NUMBER"
+fi
+
+envman add --key SERVICE_IMAGE_ID --value $SERVICE_IMAGE_ID
 envman add --key GCLOUD_PROJECT --value $GCLOUD_PROJECT
 envman add --key GCLOUD_USER --value $GCLOUD_USER
 envman add --key GOOGLE_APPLICATION_CREDENTIALS --value $GOOGLE_APPLICATION_CREDENTIALS
