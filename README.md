@@ -64,7 +64,7 @@ __Preinstalled version:__ 0.14.7
 
 1. Versioning of this image on Bitrise VMs cache
 2. Enforce using `us.gcr.io` container registry
-3. Migrate dockerhub image build for another CI
-4. Migrate dockerhub for quay.io 
+3. Migrate dockerhub for quay.io 
+4. Build CI
 5. Security check on preinstalled tools
 6. Automated terraform security check using tfsec (github.com/tfsec/tfsec/cmd/tfsec)
