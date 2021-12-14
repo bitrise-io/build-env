@@ -68,10 +68,18 @@ inputs:
       is_expand: true
       is_required: false
       value_options: []
+  - GKE_CLUSTER_PROJECT:
+    opts:
+      title: "GKE cluster project"
+      summary: GCP project where the cluster is hosted
+      description: GCP project where the cluster is hosted. By default, the project parsed from GCLOUD_KEY is used.
+      is_expand: true
+      is_required: false
+      value_options: []
   - GKE_CLUSTER_REGION: us-central1
     opts:
-      title: "Region of GKE cluster"
-      summary: "Region of GKE cluster"
+      title: "Location of the GKE cluster"
+      summary: "Location of the GKE cluster"
       is_expand: true
       is_required: false
       value_options: []
@@ -95,23 +103,11 @@ inputs:
         This settings would select a terraform workspace for additional operation. Default value is "default".
 
 outputs:
-  - GCLOUD_PROJECT:
-    opts:
-      title: Google cloud project
-      summary: Google cloud project parsed from $GCLOUD_KEY
-      description: Google cloud project parsed from $GCLOUD_KEY. It's empty in case GCLOUD_KEY input is not specified.
   - GCLOUD_USER:
     opts:
       title: Google cloud user
       summary: Google cloud user parsed from $GCLOUD_KEY
       description: Google cloud user parsed from $GCLOUD_KEY. It's empty in case GCLOUD_KEY input is not specified.
-  - SERVICE_IMAGE_ID:
-    opts:
-      title: Service image ID
-      summary: 'gcr.io/$GCLOUD_PROJECT/$SERVICE_NAME:$BITRISE_BUILD_NUMBER'
-      description: |-
-        Opinionated naming for the image id being built for the service. This makes sure the
-        image is correctly named for GCR. It's empty in case GCLOUD_KEY input is not specified.
   - GOOGLE_APPLICATION_CREDENTIALS:
     opts:
       title: Google credentials path
