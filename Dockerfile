@@ -1,8 +1,8 @@
 FROM bitriseio/bitrise-base-20.04:latest
 
-ENV GO_VERSION=1.15.7 \
-    TERRAFORM_VERSION=0.14.7 \
-    GCLOUD_VERSION=320.0.0 \
+ENV GO_VERSION=1.15.15 \
+    TERRAFORM_VERSION=0.15.5 \
+    GCLOUD_VERSION=394.0.0 \
     # overriding GOPATH so we'll preserve pre-installed packages
     GOPATH=$HOME/go \
     GOBIN=$HOME/go/bin
@@ -21,5 +21,7 @@ ENV PATH=$GOBIN:$PATH:/usr/local/google-cloud-sdk/bin
 # install go dependencies
 RUN mkdir -p $GOPATH \
     && go get -u github.com/kisielk/errcheck \
-    && go get -u github.com/tfsec/tfsec/cmd/tfsec \
     && go get -u golang.org/x/lint/golint
+
+RUN wget 'https://github.com/aquasecurity/tfsec/releases/download/v1.26.3/tfsec-linux-amd64' -O /usr/local/bin/tfsec && chmod +x /usr/local/bin/tfsec
+
