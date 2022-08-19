@@ -20,8 +20,8 @@ ENV PATH=$GOBIN:$PATH:/usr/local/google-cloud-sdk/bin
 
 # install go dependencies
 RUN mkdir -p $GOPATH \
-    && go install github.com/kisielk/errcheck \
-    && go install golang.org/x/lint/golint
+    && go install github.com/kisielk/errcheck@latest \
+    && go install golang.org/x/lint/golint@latest
 
 RUN wget 'https://github.com/aquasecurity/tfsec/releases/download/v1.26.3/tfsec-linux-amd64' -O /usr/local/bin/tfsec && chmod +x /usr/local/bin/tfsec
 
